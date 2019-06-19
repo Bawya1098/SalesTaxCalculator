@@ -19,9 +19,9 @@ public class BillingCounter {
     private List<Item> addItem(Bill bill, int noOfItems) {
         for (int index = 0; index < noOfItems; index++) {
             String[] strings = scan.nextLine().split(" ");
-            String itemName = strings[0];
-            int quantity = Integer.parseInt(strings[1]);
-            double price = Double.parseDouble(strings[2]);
+            int quantity = Integer.parseInt(strings[0]);
+            String itemName = strings[1];
+            double price = Double.parseDouble(strings[3]);
             Item item = new Item(itemName, quantity, price);
             bill.items.add(item);
         }
