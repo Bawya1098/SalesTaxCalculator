@@ -4,19 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class BillingCounter {
+public class AccountsManagement {
     private List<Item> items = new ArrayList<>();
-    private static final double tax = 0.15;
+    private static final double totalTax = 0.15;
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        BillingCounter counter = new BillingCounter();
+        AccountsManagement management = new AccountsManagement();
         System.out.println("Enter Number of Items: ");
         int noOfItems = scan.nextInt();
         scan.nextLine();
-        List<Item> items = counter.addItem(scan, noOfItems);
-        counter.calculateTax(items);
-        counter.displayItemsName(items);
+        List<Item> items = management.addItem(scan, noOfItems);
+        management.displayItemsName(items);
     }
 
     private List<Item> addItem(Scanner scan, int noOfItems) {
@@ -25,18 +24,10 @@ public class BillingCounter {
             int quantity = Integer.parseInt(strings[0]);
             String itemName = strings[1];
             double price = Double.parseDouble(strings[3]);
-            Item item = new Item(itemName, quantity, price);
+            Item item = new Item(itemName, quantity, price,AccountsManagement.totalTax);
             items.add(item);
         }
         return items;
-    }
-
-    private void calculateTax(List<Item> items) {
-        for (Item item : items) {
-            double price = getItemPrice();
-            double itemTax = price * BillingCounter.tax;
-            item.setTax(itemTax);
-        }
     }
 
     private void displayItemsName(List<Item> items) {
@@ -45,12 +36,6 @@ public class BillingCounter {
         }
     }
 
-    private double getItemPrice() {
-        double price = 0.0;
-        for (Item item : items) {
-            price = item.getPrice();
-        }
-        return price;
-    }
+
 
 }

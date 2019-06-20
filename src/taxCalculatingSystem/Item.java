@@ -4,12 +4,13 @@ public class Item {
     private String name;
     private int quantity;
     private double price;
-    private double tax;
+    private double taxCost;
 
-    Item(String name, int quantity, double price) {
+    Item(String name, int quantity, double price, double salesTax) {
         this.name = name;
         this.quantity = quantity;
         this.price = price;
+        this.taxCost = calculateTax(salesTax);
     }
 
     @Override
@@ -17,14 +18,11 @@ public class Item {
         return " Item Name :" + name + "\n"
                 + "quantity :" + quantity + "\n"
                 + "price : " + price + "\n"
-                + "tax : " + tax;
+                + "taxCost : " + taxCost;
     }
 
-    public void setTax(double tax) {
-        this.tax = tax;
-    }
-
-    public double getPrice() {
-        return price;
+    private double calculateTax(double salesTax) {
+        taxCost = price * salesTax;
+        return taxCost;
     }
 }
