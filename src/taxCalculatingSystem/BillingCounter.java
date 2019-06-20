@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class BillingCounter {
     private Scanner scan = new Scanner(System.in);
+    private static final double tax = 0.15;
 
     public static void main(String[] args) {
         BillingCounter counter = new BillingCounter();
@@ -13,7 +14,16 @@ public class BillingCounter {
         int noOfItems = counter.scan.nextInt();
         counter.scan.nextLine();
         List<Item> items = counter.addItem(bill, noOfItems);
+        counter.calculateTax(items);
         bill.displayItemsName(items);
+    }
+
+    private void calculateTax(List<Item> items) {
+        for (Item item : items) {
+            double price = item.getPrice();
+            double itemTax = price * BillingCounter.tax;
+            item.setTax(itemTax);
+        }
     }
 
     private List<Item> addItem(Bill bill, int noOfItems) {

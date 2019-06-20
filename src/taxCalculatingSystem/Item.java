@@ -4,6 +4,7 @@ public class Item {
     private String name;
     private int quantity;
     private double price;
+    private double tax;
 
     Item(String name, int quantity, double price) {
         this.name = name;
@@ -13,6 +14,17 @@ public class Item {
 
     @Override
     public String toString() {
-        return name;
+        return " Item Name :" + name + "\n"
+                + "quantity :" + quantity + "\n"
+                + "price : " + price + "\n"
+                + "tax : " + tax;
+    }
+
+    public void setTax(double tax) {
+        this.tax = tax;
+    }
+
+    public double getPrice() {
+        return price;
     }
 }
