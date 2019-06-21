@@ -16,6 +16,7 @@ public class AccountsManagement {
         int noOfItems = Integer.parseInt(scan.nextLine());
         items.addItem(scan, noOfItems);
         items.calculateTax(management.exemptedItems, tax);
+        items.calculateTotalCost();
         items.displayItemsName();
     }
 }

@@ -7,6 +7,7 @@ public class Item {
     private int quantity;
     private double price;
     private double taxCost;
+    private double cost;
 
     Item(String name, int quantity, double price) {
         this.name = name;
@@ -19,7 +20,8 @@ public class Item {
         return " Item Name :" + name + "\n"
                 + "quantity :" + quantity + "\n"
                 + "price : " + price + "\n"
-                + "taxCost : " + taxCost;
+                + "taxCost : " + taxCost + "\n"
+                + "Cost : " + cost;
     }
 
     public double calculateTax(double salesTax) {
@@ -39,4 +41,11 @@ public class Item {
         return result;
     }
 
+    public double calculatecost() {
+        return (price + taxCost) * quantity;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
 }

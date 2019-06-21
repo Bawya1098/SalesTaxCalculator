@@ -36,4 +36,12 @@ public class Items {
             }
         }
     }
+
+    public void calculateTotalCost() {
+        double sum ;
+        for (Item item : items) {
+            sum = item.calculatecost();
+            item.setCost(sum);
+        }
+    }
 }
